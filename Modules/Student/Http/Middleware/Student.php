@@ -20,5 +20,6 @@ class Student
         if(!Auth::guard('student')->check())
             return redirect()->route('student.ShowLogin');
         return $next($request);
+    
     }
 }

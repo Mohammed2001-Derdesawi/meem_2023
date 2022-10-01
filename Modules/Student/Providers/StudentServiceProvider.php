@@ -4,6 +4,8 @@ namespace Modules\Student\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Student\Repositories\Authentication\AuthInterface;
+use Modules\Student\Repositories\Authentication\AuthRepository;
 
 class StudentServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class StudentServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(AuthInterface::class , AuthRepository::class);
     }
 
     /**
