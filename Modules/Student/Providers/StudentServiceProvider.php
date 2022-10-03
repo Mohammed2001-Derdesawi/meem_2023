@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Modules\Student\Repositories\Authentication\AuthInterface;
 use Modules\Student\Repositories\Authentication\AuthRepository;
+use Modules\Student\Repositories\Cart\CartInterface;
+use Modules\Student\Repositories\Cart\CartRepository;
 
 class StudentServiceProvider extends ServiceProvider
 {
@@ -41,6 +43,7 @@ class StudentServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
         $this->app->bind(AuthInterface::class , AuthRepository::class);
+        $this->app->bind(CartInterface::class , CartRepository::class);
     }
 
     /**

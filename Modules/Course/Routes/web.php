@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Course\Http\Controllers\Course\CourseController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,9 @@
 |
 */
 
-Route::prefix('course')->group(function() {
-    Route::get('/', 'CourseController@index');
+
+Route::prefix('course')->name('course.')->group(function () {
+    
+    Route::get('free' , [CourseController::class , 'getFreeCourses'])->name('free');
+
 });

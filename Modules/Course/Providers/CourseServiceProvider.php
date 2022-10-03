@@ -4,6 +4,8 @@ namespace Modules\Course\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Course\Repositories\Course\CourseInterface;
+use Modules\Course\Repositories\Course\CourseRepository;
 
 class CourseServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class CourseServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(CourseInterface::class , CourseRepository::class);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Modules\Student\Http\Controllers\Authentication\AuthController;
+use Modules\Student\Http\Controllers\Cart\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ Route::prefix('student')->name('student.')->group(function () {
     // Begin::Routes with Authentication
     Route::middleware('student')->group(function () {
 
+        Route::get('add-to-cart/{id}' , [CartController::class , 'store'])->name('AddToCart');
+        Route::get('delete-from-cart/{id}' , [CartController::class , 'delete'])->name('DeleteFromCart');
         
     });
     // End::Routes with Authentication
