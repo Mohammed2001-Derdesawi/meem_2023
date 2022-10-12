@@ -4,6 +4,8 @@ namespace Modules\Course\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Course\Repositories\Category\CategoryInterface;
+use Modules\Course\Repositories\Category\CategoryRepository;
 use Modules\Course\Repositories\Course\CourseInterface;
 use Modules\Course\Repositories\Course\CourseRepository;
 
@@ -41,6 +43,7 @@ class CourseServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
         $this->app->bind(CourseInterface::class , CourseRepository::class);
+        $this->app->bind(CategoryInterface::class , CategoryRepository::class);
     }
 
     /**

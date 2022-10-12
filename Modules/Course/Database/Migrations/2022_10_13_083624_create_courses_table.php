@@ -19,15 +19,16 @@ class CreateCoursesTable extends Migration
             $table->string('title');
             $table->integer('lectures_num');
             $table->longText('description');
-            $table->date('start_at');
-            $table->date('end_at');
+            $table->date('start_at')->nullable();
+            $table->date('end_at')->nullable();
             $table->integer('price');
             $table->enum('type' , ['paid' , 'free' , 'partnership']);
             $table->tinyInteger('visiable');
             $table->integer('course_time');
             $table->string('dates_image');
             $table->string('sub_title');
-
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            
             $table->timestamps();
         });
     }

@@ -1,7 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Modules\Course\Http\Controllers\Category\CategoryController;
+use Modules\Student\Entities\Student\Student;
 use Modules\Student\Http\Controllers\Authentication\AuthController;
 use Modules\Student\Http\Controllers\Cart\CartController;
+use Modules\Student\Http\Controllers\Student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +24,19 @@ Route::prefix('student')->name('student.')->group(function () {
     // Begin::Routes with Authentication
     Route::middleware('student')->group(function () {
 
+        // Begin::Routes Cart
         Route::get('add-to-cart/{id}' , [CartController::class , 'store'])->name('AddToCart');
         Route::get('delete-from-cart/{id}' , [CartController::class , 'delete'])->name('DeleteFromCart');
+        // End::Routes Cart
+
+        // Begin::Routes Student
+        Route::get('get_Mycourses' , [StudentController::class , 'getMyCourses'])->name('getMyCourses');
+        // End::Routes Student
+
+        // Begin::Routes Categories
+        Route::get('categories' , [CategoryController::class , 'categories'])->name('categories');
+        Route::get('category/{id}/courses' , [CategoryController::class , 'getCourses'])->name('getCourses');
+        // End::Routes Categories
         
     });
     // End::Routes with Authentication
@@ -42,5 +56,7 @@ Route::prefix('student')->name('student.')->group(function () {
     Route::post('logout', [AuthController::class , 'logout'])->name('logout');
 
     // End::Routes without Authentication
+
+    Route::get('cart' , [CartController::class , 'show'])->name('showCart');
 
 });

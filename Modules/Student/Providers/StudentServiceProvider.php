@@ -8,6 +8,8 @@ use Modules\Student\Repositories\Authentication\AuthInterface;
 use Modules\Student\Repositories\Authentication\AuthRepository;
 use Modules\Student\Repositories\Cart\CartInterface;
 use Modules\Student\Repositories\Cart\CartRepository;
+use Modules\Student\Repositories\Student\StudentInterface;
+use Modules\Student\Repositories\Student\StudentRepository;
 
 class StudentServiceProvider extends ServiceProvider
 {
@@ -44,6 +46,7 @@ class StudentServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
         $this->app->bind(AuthInterface::class , AuthRepository::class);
         $this->app->bind(CartInterface::class , CartRepository::class);
+        $this->app->bind(StudentInterface::class , StudentRepository::class);
     }
 
     /**

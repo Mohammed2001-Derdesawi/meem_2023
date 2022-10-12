@@ -16,6 +16,11 @@ class CartController extends Controller
     }
 
 
+    public function show() {
+        $this->CartRepo->show(['courses'] , ['*'] , 'student');
+    }
+
+
     public function store($id) {
         $course = Course::where('id' , $id)->first();
         $this->CartRepo->store($course);
